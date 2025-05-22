@@ -1,6 +1,7 @@
 ### Added
 AD-101: added User entity with basic fields
 Ad-102: added docker-compose yaml with oracle config
+AD-103: added category entity
 
 ###Changed
 
