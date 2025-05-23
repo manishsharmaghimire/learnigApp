@@ -10,7 +10,8 @@ AD-106: added  video,course and  order entity
 
 
 ###Fixed
-FX-201: fixed  entity related issue  in order,vedio,category,user,course entity
+FX-201: fixed  entity related issue  in order,vedio,category,user,course entity'
+Fx-201:  deleted two main duplicate files
 
 
 
@@ -19,3 +20,4 @@ FX-201: fixed  entity related issue  in order,vedio,category,user,course entity
 
 ###Changed
 CH-301: converted app properties int yml
+CH-302:  added missing category entity 
