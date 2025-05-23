@@ -11,3 +11,11 @@ AD-106: added  video,course and  order entity
 
 ###Fixed
 FX-201: fixed  entity related issue  in order,vedio,category,user,course entity
+
+
+
+
+
+
+###Changed
+CH-301: converted app properties int yml
