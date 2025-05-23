@@ -1,24 +1,49 @@
 package com.elearn.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name="categories")
+@Table(name = "categories")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
 public class Category {
+
+    @Id
+    @Column(length = 50)
     private String id;
+
+    @Column(nullable = false, length = 100)
     private String title;
-    @Column(name = "desc")
-    private String desc;
+
+    @Column(name = "description", columnDefinition = "CLOB")
+    private String description;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "added_date")
     private Date addedDate;
+
+    @ManyToMany(mappedBy = "categoryList", cascade = CascadeType.ALL)
+    private List<Course> courses = new ArrayList<>();
+
+
+    public void addCourse(Course course) {
+        if (!courses.contains(course)) {
+            courses.add(course);
+            course.getCategoryList().add(this);
+        }
+    }
+
+    public void removeCourse(Course course) {
+        if (courses.contains(course)) {
+            courses.remove(course);
+            course.getCategoryList().remove(this);
+        }
+    }
 }
