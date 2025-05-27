@@ -5,14 +5,15 @@ AD-103: added category entity
 AD-104: added missing parameters and annotation in category
 AD-105: added missing getter and setter annotation in User Class
 AD-106: added  video,course and  order entity
-Ad-107: added UserDto entity class
+AD-107: added UserDto  class
+AD-108: added  CategoryDto,CourseDto,OrderDto,VideoDto
 
 
 
 
 ###Fixed
 FX-201: fixed  entity related issue  in order,vedio,category,user,course entity'
-Fx-201:  deleted two main duplicate files
+FX-201:  deleted two main duplicate files
 
 
 
