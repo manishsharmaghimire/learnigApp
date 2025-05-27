@@ -7,6 +7,7 @@ AD-105: added missing getter and setter annotation in User Class
 AD-106: added  video,course and  order entity
 AD-107: added UserDto  class
 AD-108: added  CategoryDto,CourseDto,OrderDto,VideoDto
+AD-109 added  Repository for all entity
 
 
 
