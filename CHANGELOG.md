@@ -9,7 +9,8 @@ AD-107: added UserDto  class
 AD-108: added  CategoryDto,CourseDto,OrderDto,VideoDto
 AD-109: added  Repository for all entity
 AD-110: added service class with category logic
-AD-111:  added config file 
+AD-111: added config file 
+AD-112: added custom responses and custom message dto for handling  responses
 
 
 
