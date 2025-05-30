@@ -3,6 +3,7 @@ package com.elearn.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +28,7 @@ public class Category {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "added_date")
-    private Date addedDate;
+    private LocalDate addedDate;
 
     @ManyToMany(mappedBy = "categoryList", cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
