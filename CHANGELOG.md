@@ -17,6 +17,7 @@ AD-110: added service class with category logic
 FX-201: fixed entity related issue in order,video,category, user,course entity
 FX-202: deleted two main duplicate files
 FX-203: fixed category dto,category entity, categoryRepo
+FX-204: fixed courseRepo
 
 
 
