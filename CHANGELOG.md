@@ -25,3 +25,4 @@ FX-203: fixed category dto,category entity, categoryRepo
 ###Changed
 CH-301: converted app properties int yml
 CH-302: added missing category entity 
+CH-303: added security dependency as well as modelMapper dependency
