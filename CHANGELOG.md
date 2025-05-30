@@ -11,6 +11,7 @@ AD-109: added  Repository for all entity
 AD-110: added service class with category logic
 AD-111: added config file 
 AD-112: added custom responses and custom message dto for handling  responses
+AD-113: added  ResourceNotFoundException class and Global exception for handling exception globallygit
 
 
 
