@@ -21,9 +21,9 @@ public class Video {
     @Column(name = "title", nullable = false, length = 255)
     private String title;
 
-    @Lob
+
     @Column(name = "description", nullable = true)
-    private String desc;
+    private String description;
 
     @Column(name = "file_path", length = 255)
     private String filePath;

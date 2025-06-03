@@ -3,6 +3,7 @@ package com.elearn.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Course {
 
     @Id
@@ -35,9 +37,9 @@ public class Course {
 
     private double discount;
 
-    @Temporal(TemporalType.TIMESTAMP)
+
     @Column(name = "created_date")
-    private Date createdDate;
+    private LocalDate createdDate;
 
     @Column(length = 255)
     private String banner;
