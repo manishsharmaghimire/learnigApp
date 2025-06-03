@@ -23,10 +23,9 @@ public class Category {
     @Column(nullable = false, length = 100)
     private String title;
 
-    @Column(name = "description", columnDefinition = "CLOB")
+    @Column(name = "description")
     private String description;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "added_date")
     private LocalDate addedDate;
 

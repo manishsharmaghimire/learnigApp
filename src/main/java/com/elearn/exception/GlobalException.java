@@ -12,7 +12,6 @@ public class GlobalException {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<CustomMessage> handleResourceNotFound(ResourceNotFoundException ex) {
-
         CustomMessage customMessage =new CustomMessage();
         customMessage.setMessage(ex.getMessage());
         customMessage.setSuccess(false);
