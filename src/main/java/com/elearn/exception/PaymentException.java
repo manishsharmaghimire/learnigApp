@@ -1,4 +1,4 @@
-package com.elearn.services.exception;
+package com.elearn.exception;
 
 public class PaymentException extends RuntimeException{
     /**
