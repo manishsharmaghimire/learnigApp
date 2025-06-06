@@ -15,11 +15,11 @@ import java.time.LocalDate;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String orderId;
 
-    @Column(name = "esewa_order_id", nullable = false, length = 100)
+    @Column(name = "esewa_order_id", nullable = false, length = 100 ,unique = true)
     private String esewaOrderId;
+
 
     @Column(nullable = false)
     private double amount;
@@ -30,15 +30,14 @@ public class Order {
     @Column(name = "created_date")
     private LocalDate createdDate;
 
-    @Column(name = "user_uid", nullable = false, length = 100)
-    private String userId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_ref_id", referencedColumnName = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinTable(name = "course_id")
+    private Course course;
 
-    @Lob
-    @Column(name = "address", columnDefinition = "CLOB")
+    @Column(name = "address")
     private String address;
 }

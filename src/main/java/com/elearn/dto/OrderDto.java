@@ -2,10 +2,7 @@ package com.elearn.dto;
 
 import com.elearn.entity.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -13,21 +10,17 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class OrderDto {
 
-    private Long id;
+    private String orderId;
 
     private String esewaOrderId;
 
     private double amount;
 
     private String pmtStatus;
-
     private LocalDate createdDate;
-
     private String userId;
-
-    private User user;
-
     private String address;
 }

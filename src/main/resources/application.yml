@@ -1,3 +1,8 @@
+APP_BASE_URL: http://localhost:8081
+ESEWA_MERCHANT_CODE: EPAYTEST
+
+
+
 server:
   port: 8081
 
@@ -17,4 +22,11 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        format_sql: true
+esewa:
+  merchant:
+    code: EPAYTEST
+  urls:
+    payment: https://uat.esewa.com.np/epay/main
+    verification: https://uat.esewa.com.np/epay/transrec
+    success: http://localhost:8081/api/orders/esewa/success
+    failure: http://localhost:8081/api/orders/esewa/failure

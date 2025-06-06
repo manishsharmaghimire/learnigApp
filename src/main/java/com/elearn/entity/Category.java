@@ -3,6 +3,7 @@ package com.elearn.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,12 +23,11 @@ public class Category {
     @Column(nullable = false, length = 100)
     private String title;
 
-    @Column(name = "description", columnDefinition = "CLOB")
+    @Column(name = "description")
     private String description;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "added_date")
-    private Date addedDate;
+    private LocalDate addedDate;
 
     @ManyToMany(mappedBy = "categoryList", cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<>();
