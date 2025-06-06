@@ -10,7 +10,7 @@ import com.elearn.repository.CourseRepo;
 import com.elearn.repository.OrderRepository;
 import com.elearn.repository.UserRepository;
 import com.elearn.services.OrderService;
-import com.elearn.services.exception.PaymentException;
+import com.elearn.exception.PaymentException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
     private String failureUrl;
 
 
-    @Value("${esewa.verification.url}")
+    @Value("${esewa.urls.verification}")
     private String verificationUrl; // Added missing verification URL
 
     // ... existing getCourse() and getUser() methods ...

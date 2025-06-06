@@ -1,5 +1,6 @@
 package com.elearn.services.serviceImpl;
 
+import com.elearn.config.AppConstants;
 import com.elearn.dto.CourseDto;
 import com.elearn.dto.CustomPageResponse;
 import com.elearn.dto.ResourceContentType;
@@ -8,8 +9,11 @@ import com.elearn.exception.ResourceNotFoundException;
 import com.elearn.repository.CourseRepo;
 import com.elearn.services.CategoryService;
 import com.elearn.services.CourseService;
+import com.elearn.services.FileService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +22,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -33,6 +39,7 @@ public class CourseServiceImpl implements CourseService {
 
 
     private CategoryService categoryService;
+    private FileService fileService;
 
 
    // private FileService fileService;
@@ -152,7 +159,23 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public CourseDto saveBanner(MultipartFile file, String courseId) throws IOException {
-        return null;
+
+        Course course=this.courseRepository.findById(courseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Course not found with id: " + courseId));
+
+        if (course.getBanner()!=null){
+            fileService.deleteCourseBannerIfExists(course.getBanner());
+        }
+
+        String filePath = fileService.save(file, AppConstants.COURSE_BANNER_UPLOAD_DIR, file.getOriginalFilename());
+
+        course.setBanner(filePath);
+        course.setBannerContentType(file.getContentType());
+        return modelMapper.map(courseRepository.save(course), CourseDto.class);
+
+
+
+
     }
 
     /**
@@ -161,6 +184,13 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public ResourceContentType getCourseBannerById(String courseId) {
-        return null;
+        Course course = courseRepository.findById(courseId).orElseThrow(() -> new ResourceNotFoundException("Course not found!!"));
+        String bannerPath = course.getBanner();
+        Path path = Paths.get(bannerPath);
+        Resource resource=new FileSystemResource(path);
+        ResourceContentType contentType=new  ResourceContentType();
+        contentType.setResource(resource);
+        contentType.setContentType(course.getBannerContentType());
+        return contentType;
     }
 }
