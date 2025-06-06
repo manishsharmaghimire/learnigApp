@@ -7,13 +7,14 @@ AD-105: added missing getter and setter annotation in User Class
 AD-106: added  video,course and  order entity
 AD-107: added UserDto  class
 AD-108: added  CategoryDto,CourseDto,OrderDto,VideoDto
-AD-109 added  Repository for all entity
+AD-109  added  Repository for all entity
+AD-110  added  Spring Security dependency on pom xml
 
 
 
 
 ###Fixed
-FX-201: fixed  entity related issue  in order,vedio,category,user,course entity'
+FX-201: fixed  entity related issue  in order,vedio,category,user,course entity
 FX-201:  deleted two main duplicate files
 
 
