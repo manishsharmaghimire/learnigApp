@@ -38,8 +38,13 @@ public class Course {
     private double discount;
 
 
-    @Column(name = "created_date")
-    private LocalDate createdDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_date", updatable = false)
+    private Date createdDate;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "last_modified_date")
+    private Date lastModifiedDate;
 
     @Column(length = 255)
     private String banner;
@@ -70,5 +75,17 @@ public class Course {
             categoryList.remove(category);
             category.getCourses().remove(this);
         }
+    }
+    
+    @PrePersist
+    protected void onCreate() {
+        Date now = new Date();
+        createdDate = now;
+        lastModifiedDate = now;
+    }
+    
+    @PreUpdate
+    protected void onUpdate() {
+        lastModifiedDate = new Date();
     }
 }

@@ -1,10 +1,11 @@
 package com.elearn.services;
 
 import com.elearn.dto.UserDto;
+import com.elearn.dto.UserResponseDto;
 
 public interface UserService {
 
-    UserDto create(UserDto dto);
-    UserDto geById(String userId);
+    UserResponseDto create(UserDto dto);
 
+    UserDto getById(String userId);
 }
