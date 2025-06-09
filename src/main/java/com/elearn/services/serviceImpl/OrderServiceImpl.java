@@ -25,6 +25,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -108,7 +109,7 @@ public class OrderServiceImpl implements OrderService {
                 .course(course)
                 .user(user)
                 .pmtStatus("PENDING") // Changed to uppercase for consistency
-                .createdDate(LocalDate.now())
+                .createdDate(new Date())
                 .build();
 
         Order savedOrder = orderRepo.save(order);

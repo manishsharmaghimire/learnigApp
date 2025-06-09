@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "orders")
@@ -27,8 +28,14 @@ public class Order {
     @Column(name = "payment_status", length = 50)
     private String pmtStatus;
 
-    @Column(name = "created_date")
-    private LocalDate createdDate;
+    @Column(name = "created_date", updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+    
+    @PrePersist
+    protected void onCreate() {
+        createdDate = new Date();
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_ref_id", referencedColumnName = "user_id")

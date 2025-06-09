@@ -20,6 +20,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,7 +46,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryDto insert(CategoryDto categoryDto) {
         String catId = UUID.randomUUID().toString();
         categoryDto.setId(catId);
-        categoryDto.setAddedDate(LocalDate.now());
+        categoryDto.setAddedDate(new Date());
         Category category = modelMapper.map(categoryDto, Category.class);
         Category savedCat = categoryRepository.save(category);
         log.info("Category inserted with ID: {}", catId);

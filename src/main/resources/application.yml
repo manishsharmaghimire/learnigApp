@@ -1,27 +1,88 @@
+# Application Properties
 APP_BASE_URL: http://localhost:8081
 ESEWA_MERCHANT_CODE: EPAYTEST
 
-
-
+# Server Configuration
 server:
   port: 8081
+  servlet:
+    context-path: /
 
+# Spring Configuration
 spring:
+  # Jackson Configuration
+  jackson:
+    time-zone: UTC
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
+    serialization:
+      write-dates-as-timestamps: false
+      write-dates-with-zone-id: true
+      write-durations-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+      adjust-dates-to-context-time-zone: false
+    default-property-inclusion: non_null
+
+  # Database Configuration
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
-    username: elearn
-    password: elearn123
+    url: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    username: system
+    password: Password123
     driver-class-name: oracle.jdbc.OracleDriver
     hikari:
       connection-timeout: 30000
-      maximum-pool-size: 5
-
+      maximum-pool-size: 10
+      minimum-idle: 5
+      idle-timeout: 30000
+      max-lifetime: 1200000
+      auto-commit: false
+      connection-test-query: SELECT 1 FROM DUAL
+  
+  # JPA Configuration
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    database-platform: org.hibernate.dialect.OracleDialect
+    database: oracle
+    generate-ddl: true
+    open-in-view: false
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+      jakarta:
+        persistence:
+          validation:
+            mode: none
+          schema-generation:
+            database:
+              action: update
+
+# SpringDoc OpenAPI Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+    doc-expansion: none
+    display-query-params: true
+    display-request-duration: true
+    filter: true
+    try-it-out-enabled: true
+  cache:
+    disabled: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  packages-to-scan: com.elearn.controller
+  model-and-view-allowed: true
+  override-with-generic-response: false
+
 esewa:
   merchant:
     code: EPAYTEST
@@ -30,3 +91,7 @@ esewa:
     verification: https://uat.esewa.com.np/epay/transrec
     success: http://localhost:8081/api/orders/esewa/success
     failure: http://localhost:8081/api/orders/esewa/failure
+
+video:
+  upload:
+    path: /uploads
